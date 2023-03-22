@@ -1,8 +1,8 @@
 /*==================================================================================================
 *   Project              : RTD AUTOSAR 4.4
 *   Platform             : CORTEXM
-*   Peripheral           : S32K3XX
-*   Dependencies         : none
+*   Peripheral           : LPSPI
+*   Dependencies         : 
 *
 *   Autosar Version      : 4.4.0
 *   Autosar Revision     : ASR_REL_4_4_REV_0000
@@ -10,7 +10,7 @@
 *   SW Version           : 2.0.3
 *   Build Version        : S32K3_RTD_2_0_3_D2302_ASR_REL_4_4_REV_0000_20230217
 *
-*   (c) Copyright 2020 - 2021 NXP Semiconductors
+*   (c) Copyright 2020 - 2023 NXP Semiconductors
 *   All Rights Reserved.
 *
 *   NXP Confidential. This software is owned or controlled by NXP and may only be
@@ -22,20 +22,24 @@
 *   activate or otherwise use the software.
 ==================================================================================================*/
 
-#ifndef TSPC_PORT_IP_CFG_H
-#define TSPC_PORT_IP_CFG_H
+#ifndef LPSPI_IP_SA_PBCFG_BOARD_InitPeripherals_H
+#define LPSPI_IP_SA_PBCFG_BOARD_InitPeripherals_H
 
-/**
-*   @file      Tspc_Port_Ip_Cfg.h
+/**   
+*   @file    Lpspi_Ip_PBcfg.h
+*   @version 2.0.3
 *
-*   @addtogroup Port_CFG
+*   @brief   AUTOSAR Spi - Post-Build(PB) configuration file code template.
+*   @details Code template for Post-Build(PB) configuration file generation.
+*
+*   @addtogroup LPSPI_DRIVER_CONFIGURATION Lpspi Driver Configuration
 *   @{
 */
 
 #ifdef __cplusplus
-extern "C"{
+extern "C"
+{
 #endif
-
 
 /*==================================================================================================
                                          INCLUDE FILES
@@ -43,72 +47,67 @@ extern "C"{
  2) needed interfaces from external units
  3) internal and external interfaces from this unit
 ==================================================================================================*/
-#include "Tspc_Port_Ip_Types.h"
-#include "S32K344_TSPC.h"
 
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define TSPC_PORT_IP_VENDOR_ID_CFG_H                       43
-#define TSPC_PORT_IP_AR_RELEASE_MAJOR_VERSION_CFG_H        4
-#define TSPC_PORT_IP_AR_RELEASE_MINOR_VERSION_CFG_H        4
-#define TSPC_PORT_IP_AR_RELEASE_REVISION_VERSION_CFG_H     0
-#define TSPC_PORT_IP_SW_MAJOR_VERSION_CFG_H                2
-#define TSPC_PORT_IP_SW_MINOR_VERSION_CFG_H                0
-#define TSPC_PORT_IP_SW_PATCH_VERSION_CFG_H                3
+/* Inclusion of incompatible header files shall be avoided */
+#define LPSPI_IP_SA_BOARD_INITPERIPHERALS_VENDOR_ID_PBCFG                        43
+#define LPSPI_IP_SA_BOARD_INITPERIPHERALS_AR_RELEASE_MAJOR_VERSION_PBCFG         4
+#define LPSPI_IP_SA_BOARD_INITPERIPHERALS_AR_RELEASE_MINOR_VERSION_PBCFG         4
+#define LPSPI_IP_SA_BOARD_INITPERIPHERALS_AR_RELEASE_REVISION_VERSION_PBCFG      0
+#define LPSPI_IP_SA_BOARD_INITPERIPHERALS_SW_MAJOR_VERSION_PBCFG                 2
+#define LPSPI_IP_SA_BOARD_INITPERIPHERALS_SW_MINOR_VERSION_PBCFG                 0
+#define LPSPI_IP_SA_BOARD_INITPERIPHERALS_SW_PATCH_VERSION_PBCFG                 3
 
 /*==================================================================================================
-*                                     FILE VERSION CHECKS
-==================================================================================================*/
-/* Check if the files Tspc_Port_Ip_Cfg.h and Tspc_Port_Ip_Types.h are of the same version */
-#if (TSPC_PORT_IP_VENDOR_ID_CFG_H != TSPC_PORT_IP_TYPES_VENDOR_ID_H)
-    #error "Tspc_Port_Ip_Cfg.h and Tspc_Port_Ip_Types.h have different vendor ids"
-#endif
-/* Check if Tspc_Port_Ip_Cfg.h and Tspc_Port_Ip_Types.h are of the same Autosar version */
-#if ((TSPC_PORT_IP_AR_RELEASE_MAJOR_VERSION_CFG_H    != TSPC_PORT_IP_TYPES_AR_RELEASE_MAJOR_VERSION_H) || \
-    (TSPC_PORT_IP_AR_RELEASE_MINOR_VERSION_CFG_H    != TSPC_PORT_IP_TYPES_AR_RELEASE_MINOR_VERSION_H) || \
-    (TSPC_PORT_IP_AR_RELEASE_REVISION_VERSION_CFG_H != TSPC_PORT_IP_TYPES_AR_RELEASE_REVISION_VERSION_H) \
-    )
-    #error "AutoSar Version Numbers of Tspc_Port_Ip_Cfg.h and Tspc_Port_Ip_Types.h are different"
-#endif
-/* Check if Tspc_Port_Ip_Cfg.h and Tspc_Port_Ip_Types.h are of the same Software version */
-#if ((TSPC_PORT_IP_SW_MAJOR_VERSION_CFG_H != TSPC_PORT_IP_TYPES_SW_MAJOR_VERSION_H) || \
-    (TSPC_PORT_IP_SW_MINOR_VERSION_CFG_H != TSPC_PORT_IP_TYPES_SW_MINOR_VERSION_H) || \
-    (TSPC_PORT_IP_SW_PATCH_VERSION_CFG_H != TSPC_PORT_IP_TYPES_SW_PATCH_VERSION_H)    \
-    )
-    #error "Software Version Numbers of Tspc_Port_Ip_Cfg.h and Tspc_Port_Ip_Types.h are different"
-#endif
-/*==================================================================================================
-                                           CONSTANTS
+                                      FILE VERSION CHECKS
 ==================================================================================================*/
 
 /*==================================================================================================
-                                      DEFINES AND MACROS
-==================================================================================================*/
-/* Pre-processor switch to enable/disable Touch Sense support */
-#define FEATURE_TSPC_PORT_IP_SUPPORT      (STD_ON)
-
-/*! @brief No pin was configured for this group or no need any configuration */
-
-/*==================================================================================================
-                                           ENUMS
+*                                          CONSTANTS
 ==================================================================================================*/
 
 /*==================================================================================================
-                               STRUCTURES AND OTHER TYPEDEFS
+*                                      DEFINES AND MACROS
 ==================================================================================================*/
 
 /*==================================================================================================
-                               GLOBAL VARIABLE DECLARATIONS
+*                                             ENUMS
 ==================================================================================================*/
 
 /*==================================================================================================
-                               FUNCTION PROTOTYPES
+*                                STRUCTURES AND OTHER TYPEDEFS
+==================================================================================================*/
+
+
+/*==================================================================================================
+*                                GLOBAL VARIABLE DECLARATIONS
+==================================================================================================*/
+#define LPSPI_IP_SA_CONFIG_BOARD_InitPeripherals_PB \
+    extern const Lpspi_Ip_ExternalDeviceType Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_Instance_0_BOARD_InitPeripherals; \
+    extern const Lpspi_Ip_ConfigType Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_Instance_0_BOARD_InitPeripherals; \
+
+/*==================================================================================================
+                                   LOCAL FUNCTION PROTOTYPES
+==================================================================================================*/
+
+
+/*==================================================================================================
+                                       LOCAL FUNCTIONS
+==================================================================================================*/
+
+
+/*==================================================================================================
+                                       GLOBAL FUNCTIONS
 ==================================================================================================*/
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* TSPC_PORT_IP_CFG_H */
+#endif 
+
+/** @} */
+
 

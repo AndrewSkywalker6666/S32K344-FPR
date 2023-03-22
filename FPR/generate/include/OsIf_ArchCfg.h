@@ -7,10 +7,10 @@
 * Autosar Version : 4.4.0
 * Autosar Revision : ASR_REL_4_4_REV_0000
 * Autosar Conf.Variant :
-* SW Version : 2.0.2
-* Build Version : S32K3_RTD_2_0_2_D2211_ASR_REL_4_4_REV_0000_20221129
+* SW Version : 2.0.3
+* Build Version : S32K3_RTD_2_0_3_D2302_ASR_REL_4_4_REV_0000_20230217
 *
-* (c) Copyright 2020 - 2022 NXP Semiconductors
+* (c) Copyright 2020 - 2023 NXP Semiconductors
 * All Rights Reserved.
 *
 * NXP Confidential. This software is owned or controlled by NXP and may only be
@@ -51,7 +51,7 @@ extern "C"{
 #define OSIF_ARCHCFG_AR_RELEASE_REVISION_VERSION  0
 #define OSIF_ARCHCFG_SW_MAJOR_VERSION             2
 #define OSIF_ARCHCFG_SW_MINOR_VERSION             0
-#define OSIF_ARCHCFG_SW_PATCH_VERSION             2
+#define OSIF_ARCHCFG_SW_PATCH_VERSION             3
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS

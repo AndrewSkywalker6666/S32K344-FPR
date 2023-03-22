@@ -7,10 +7,10 @@
 *   Autosar Version      : 4.4.0
 *   Autosar Revision     : ASR_REL_4_4_REV_0000
 *   Autosar Conf.Variant :
-*   SW Version           : 2.0.2
-*   Build Version        : S32K3_RTD_2_0_2_D2211_ASR_REL_4_4_REV_0000_20221129
+*   SW Version           : 2.0.3
+*   Build Version        : S32K3_RTD_2_0_3_D2302_ASR_REL_4_4_REV_0000_20230217
 *
-*   (c) Copyright 2020 - 2022 NXP Semiconductors
+*   (c) Copyright 2020 - 2021 NXP Semiconductors
 *   All Rights Reserved.
 *
 *   NXP Confidential. This software is owned or controlled by NXP and may only be
@@ -51,7 +51,7 @@ extern "C"{
 #define TSPC_PORT_IP_AR_RELEASE_REVISION_VERSION_CFG_C     0
 #define TSPC_PORT_IP_SW_MAJOR_VERSION_CFG_C                2
 #define TSPC_PORT_IP_SW_MINOR_VERSION_CFG_C                0
-#define TSPC_PORT_IP_SW_PATCH_VERSION_CFG_C                2
+#define TSPC_PORT_IP_SW_PATCH_VERSION_CFG_C                3
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
@@ -105,7 +105,11 @@ extern "C"{
  * TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 BOARD_InitPins:
 - options: {callFromInitBoot: 'true', coreID: core0}
-- pin_list: []
+- pin_list:
+  - {pin_num: '95', peripheral: LPSPI_0, signal: 'lpspi_pcs, 0', pin_signal: PTB0, direction: OUTPUT}
+  - {pin_num: '98', peripheral: LPSPI_0, signal: 'lpspi_sck, sck', pin_signal: PTC8, direction: OUTPUT}
+  - {pin_num: '97', peripheral: LPSPI_0, signal: lpspi_sin, pin_signal: PTC9, direction: INPUT}
+  - {pin_num: '33', peripheral: LPSPI_0, signal: lpspi_sout, pin_signal: PTA30, direction: OUTPUT}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 /* clang-format on */

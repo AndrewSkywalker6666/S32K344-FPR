@@ -1,7 +1,7 @@
 /*==================================================================================================
 * Project : RTD AUTOSAR 4.4
 * Platform : CORTEXM
-* Peripheral : S32K3XX
+* Peripheral : Stm_Pit_Rtc_Emios
 * Dependencies : none
 *
 * Autosar Version : 4.4.0
@@ -21,105 +21,97 @@
 * bound by the applicable license terms, then you may not retain, install,
 * activate or otherwise use the software.
 ==================================================================================================*/
+
+#ifndef PIT_IP_BOARD_INITPERIPHERALS_PBCFG_H
+#define PIT_IP_BOARD_INITPERIPHERALS_PBCFG_H
+
 /**
-*   @file       OsIf_Cfg.c
-*   @version 2.0.3
+*   @file           Pit_Ip_PBcfg.h
 *
+*   @addtogroup     pit_ip Pit IPL
 *
-*   @addtogroup OSIF_DRIVER
 *   @{
 */
-
 #ifdef __cplusplus
-extern "C"{
+extern "C"
+{
 #endif
 
 /*==================================================================================================
-                                         INCLUDE FILES
- 1) system and project includes
- 2) needed interfaces from external units
- 3) internal and external interfaces from this unit
+*                                        INCLUDE FILES
+* 1) system and project includes
+* 2) needed interfaces from external units
+* 3) internal and external interfaces from this unit
 ==================================================================================================*/
-#include "OsIf_Cfg.h"
-#include "OsIf_Cfg_TypesDef.h"
-
-#if defined(USING_OS_AUTOSAROS)
-#include "Os.h"
-#endif /* defined(USING_OS_AUTOSAROS) */
+#include "Pit_Ip_Types.h"
 
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define OSIF_CFG_VENDOR_ID_C                    43
-#define OSIF_CFG_AR_RELEASE_MAJOR_VERSION_C     4
-#define OSIF_CFG_AR_RELEASE_MINOR_VERSION_C     4
-#define OSIF_CFG_AR_RELEASE_REVISION_VERSION_C  0
-#define OSIF_CFG_SW_MAJOR_VERSION_C             2
-#define OSIF_CFG_SW_MINOR_VERSION_C             0
-#define OSIF_CFG_SW_PATCH_VERSION_C             3
+/* Inclusion of incompatible header files shall be avoided */
+#define PIT_IP_VENDOR_ID_BOARD_INITPERIPHERALS_PBCFG_H                    43
+#define PIT_IP_AR_RELEASE_MAJOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_H     4
+#define PIT_IP_AR_RELEASE_MINOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_H     4
+#define PIT_IP_AR_RELEASE_REVISION_VERSION_BOARD_INITPERIPHERALS_PBCFG_H  0
+#define PIT_IP_SW_MAJOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_H             2
+#define PIT_IP_SW_MINOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_H             0
+#define PIT_IP_SW_PATCH_VERSION_BOARD_INITPERIPHERALS_PBCFG_H             3
 
 /*==================================================================================================
-*                                     FILE VERSION CHECKS
+                                      FILE VERSION CHECKS
 ==================================================================================================*/
-/* Checks against OsIf_Cfg.h */
-#if (OSIF_CFG_VENDOR_ID_C != OSIF_CFG_VENDOR_ID)
-    #error "OsIf_Cfg.c and OsIf_Cfg.h have different vendor ids"
+#if (PIT_IP_VENDOR_ID_BOARD_INITPERIPHERALS_PBCFG_H != PIT_IP_TYPES_VENDOR_ID)
+    #error "Pit_Ip_PBcfg.h and Pit_Ip_Types.h have different vendor ids"
 #endif
-#if ((OSIF_CFG_AR_RELEASE_MAJOR_VERSION_C    != OSIF_CFG_AR_RELEASE_MAJOR_VERSION) || \
-     (OSIF_CFG_AR_RELEASE_MINOR_VERSION_C    != OSIF_CFG_AR_RELEASE_MINOR_VERSION) || \
-     (OSIF_CFG_AR_RELEASE_REVISION_VERSION_C != OSIF_CFG_AR_RELEASE_REVISION_VERSION))
-    #error "AUTOSAR Version Numbers of OsIf_Cfg.c and OsIf_Cfg.h are different"
-#endif
-#if ((OSIF_CFG_SW_MAJOR_VERSION_C != OSIF_CFG_SW_MAJOR_VERSION) || \
-     (OSIF_CFG_SW_MINOR_VERSION_C != OSIF_CFG_SW_MINOR_VERSION) || \
-     (OSIF_CFG_SW_PATCH_VERSION_C != OSIF_CFG_SW_PATCH_VERSION) \
+/* Check if this header file and header file are of the same Autosar version */
+#if ((PIT_IP_AR_RELEASE_MAJOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_H != PIT_IP_TYPES_AR_RELEASE_MAJOR_VERSION) || \
+     (PIT_IP_AR_RELEASE_MINOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_H != PIT_IP_TYPES_AR_RELEASE_MINOR_VERSION) || \
+     (PIT_IP_AR_RELEASE_REVISION_VERSION_BOARD_INITPERIPHERALS_PBCFG_H != PIT_IP_TYPES_AR_RELEASE_REVISION_VERSION) \
     )
-    #error "Software Version Numbers of OsIf_Cfg.c and OsIf_Cfg.h are different"
+    #error "AutoSar Version Numbers of Pit_Ip_PBcfg.h and Pit_Ip_Types.h are different"
 #endif
-
-/* Checks against OsIf_Cfg_TypesDef.h */
-#if (OSIF_CFG_VENDOR_ID_C != OSIF_CFG_TYPESDEF_VENDOR_ID)
-    #error "OsIf_Cfg.c and OsIf_Cfg_TypesDef.h have different vendor ids"
-#endif
-#if ((OSIF_CFG_AR_RELEASE_MAJOR_VERSION_C    != OSIF_CFG_TYPESDEF_AR_RELEASE_MAJOR_VERSION) || \
-     (OSIF_CFG_AR_RELEASE_MINOR_VERSION_C    != OSIF_CFG_TYPESDEF_AR_RELEASE_MINOR_VERSION) || \
-     (OSIF_CFG_AR_RELEASE_REVISION_VERSION_C != OSIF_CFG_TYPESDEF_AR_RELEASE_REVISION_VERSION))
-    #error "AUTOSAR Version Numbers of OsIf_Cfg.c and OsIf_Cfg_TypesDef.h are different"
-#endif
-#if ((OSIF_CFG_SW_MAJOR_VERSION_C != OSIF_CFG_TYPESDEF_SW_MAJOR_VERSION) || \
-     (OSIF_CFG_SW_MINOR_VERSION_C != OSIF_CFG_TYPESDEF_SW_MINOR_VERSION) || \
-     (OSIF_CFG_SW_PATCH_VERSION_C != OSIF_CFG_TYPESDEF_SW_PATCH_VERSION) \
+/* Check if this header file and header file are of the same Software version */
+#if ((PIT_IP_SW_MAJOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_H != PIT_IP_TYPES_SW_MAJOR_VERSION) || \
+     (PIT_IP_SW_MINOR_VERSION_BOARD_INITPERIPHERALS_PBCFG_H != PIT_IP_TYPES_SW_MINOR_VERSION) || \
+     (PIT_IP_SW_PATCH_VERSION_BOARD_INITPERIPHERALS_PBCFG_H != PIT_IP_TYPES_SW_PATCH_VERSION) \
     )
-    #error "Software Version Numbers of OsIf_Cfg.c and OsIf_Cfg_TypesDef.h are different"
+    #error "Software Version Numbers of Pit_Ip_PBcfg.h and Pit_Ip_Types.h are different"
 #endif
+/*==================================================================================================
+*                                          CONSTANTS
+==================================================================================================*/
 
 /*==================================================================================================
 *                                      DEFINES AND MACROS
 ==================================================================================================*/
-
+#define PIT_0_CH_0 &PIT_0_ChannelConfig_PB[0U]
 /*==================================================================================================
-*                                      LOCAL VARIABLES
+*                                             ENUMS
 ==================================================================================================*/
 
 /*==================================================================================================
 *                                STRUCTURES AND OTHER TYPEDEFS
 ==================================================================================================*/
 
-/*==================================================================================================
-*                                      GLOBAL VARIABLES
-==================================================================================================*/
 
 /*==================================================================================================
-*                                      GLOBAL CONSTANTS
+*                                GLOBAL VARIABLE DECLARATIONS
 ==================================================================================================*/
+#define GPT_START_SEC_CONFIG_DATA_UNSPECIFIED
+#include "Gpt_MemMap.h"
+extern const Pit_Ip_InstanceConfigType PIT_0_InitConfig_PB;
+extern const Pit_Ip_ChannelConfigType PIT_0_ChannelConfig_PB[1U];
+#define GPT_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+#include "Gpt_MemMap.h"
 
 /*==================================================================================================
 *                                    FUNCTION PROTOTYPES
 ==================================================================================================*/
 
-
 #ifdef __cplusplus
 }
-#endif /* __cplusplus */
+#endif
+
 /** @} */
+#endif /* PIT_IP_PBCFG_H*/
 

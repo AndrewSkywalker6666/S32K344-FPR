@@ -7,10 +7,10 @@
 *   Autosar Version      : 4.4.0
 *   Autosar Revision     : ASR_REL_4_4_REV_0000
 *   Autosar Conf.Variant :
-*   SW Version           : 2.0.2
-*   Build Version        : S32K3_RTD_2_0_2_D2211_ASR_REL_4_4_REV_0000_20221129
+*   SW Version           : 2.0.3
+*   Build Version        : S32K3_RTD_2_0_3_D2302_ASR_REL_4_4_REV_0000_20230217
 *
-*   (c) Copyright 2020 - 2022 NXP Semiconductors
+*   (c) Copyright 2020 - 2023 NXP Semiconductors
 *   All Rights Reserved.
 *
 *   NXP Confidential. This software is owned or controlled by NXP and may only be
@@ -43,6 +43,7 @@ extern "C"{
 * 3) internal and external interfaces from this unit
 ==================================================================================================*/
 #include "S32K344_SIUL2.h"
+#include "S32K344_DCM_GPR.h"
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
@@ -52,7 +53,7 @@ extern "C"{
 #define SIUL2_PORT_IP_DEFINES_AR_RELEASE_REVISION_VERSION_H     0
 #define SIUL2_PORT_IP_DEFINES_SW_MAJOR_VERSION_H                2
 #define SIUL2_PORT_IP_DEFINES_SW_MINOR_VERSION_H                0
-#define SIUL2_PORT_IP_DEFINES_SW_PATCH_VERSION_H                2
+#define SIUL2_PORT_IP_DEFINES_SW_PATCH_VERSION_H                3
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
@@ -70,12 +71,10 @@ extern "C"{
 */
 #define SIUL2_NUM_SIUL2_INSTANCES_U8   (1)
 
-#define PORT_VIRTWRAPPER_SUPPORT                      (STD_OFF)
-
-#define PORT_SIUL2_0_IMCRS_IDX_END_U16                 378U
-
 /* S32K3XX */
-#define SIUL2_PORT_IP_S32K3XX_PLATFORM
+#define SIUL2_PORT_IP_HAS_ONEBIT_SLEWRATE
+#define SIUL2_PORT_IP_HAS_ADC_INTERLEAVE
+#define SIUL2_PORT_IP_HAS_NO_RECEIVER_SELECT
 
 /*! @brief SIUL2 module has DSE bit */
 #define FEATURE_SIUL2_PORT_IP_HAS_DRIVE_STRENGTH
@@ -115,6 +114,8 @@ extern "C"{
 
 /* Pre-processor switch to enable/disable development error detection for Siul2 Ip API */
 #define SIUL2_PORT_IP_DEV_ERROR_DETECT                         (STD_ON)
+
+#define PORT_SIUL2_0_IMCRS_IDX_END_U16     ((uint16)378)
 
 /* Pre-processor switch to enable/disable VirtWrapper support */
 #define PORT_VIRTWRAPPER_SUPPORT                      (STD_OFF)
@@ -177,3 +178,4 @@ extern "C"{
 /** @} */
 
 #endif /* SIUL2_PORT_IP_DEFINES */
+

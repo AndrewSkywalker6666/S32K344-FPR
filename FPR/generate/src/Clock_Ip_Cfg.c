@@ -7,10 +7,10 @@
 *   Autosar Version      : 4.4.0
 *   Autosar Revision     : ASR_REL_4_4_REV_0000
 *   Autosar Conf.Variant :
-*   SW Version           : 2.0.2
-*   Build Version        : S32K3_RTD_2_0_2_D2211_ASR_REL_4_4_REV_0000_20221129
+*   SW Version           : 2.0.3
+*   Build Version        : S32K3_RTD_2_0_3_D2302_ASR_REL_4_4_REV_0000_20230217
 *
-*   (c) Copyright 2020 - 2022 NXP Semiconductors
+*   (c) Copyright 2020 - 2023 NXP Semiconductors
 *   All Rights Reserved.
 *
 *   NXP Confidential. This software is owned or controlled by NXP and may only be
@@ -24,7 +24,7 @@
 
 /**
 *   @file       Clock_Ip_Cfg.c
-*   @version    2.0.2
+*   @version    2.0.3
 *
 *   @brief   AUTOSAR Mcu - Post-Build(PB) configuration file code template.
 *   @details Code template for Post-Build(PB) configuration file generation.
@@ -59,7 +59,7 @@ extern "C"{
 #define CLOCK_IP_CFG_AR_RELEASE_REVISION_VERSION_C    0
 #define CLOCK_IP_CFG_SW_MAJOR_VERSION_C               2
 #define CLOCK_IP_CFG_SW_MINOR_VERSION_C               0
-#define CLOCK_IP_CFG_SW_PATCH_VERSION_C               2
+#define CLOCK_IP_CFG_SW_PATCH_VERSION_C               3
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
@@ -398,7 +398,7 @@ const Clock_Ip_ClockConfigType Clock_Ip_aClockConfig[1U] = {
             #if CLOCK_IP_DIVIDERS_NO > 1U
             {
                 PLL_POSTDIV_CLK,                    /* name */
-                2U,                              /* value */
+                3U,                              /* value */
                 {
                     0U,
                 }
@@ -409,7 +409,7 @@ const Clock_Ip_ClockConfigType Clock_Ip_aClockConfig[1U] = {
             #if CLOCK_IP_DIVIDERS_NO > 2U
             {
                 PLL_PHI0_CLK,                    /* name */
-                3U,                              /* value */
+                1U,                              /* value */
                 {
                     0U,
                 }
@@ -419,7 +419,7 @@ const Clock_Ip_ClockConfigType Clock_Ip_aClockConfig[1U] = {
             #if CLOCK_IP_DIVIDERS_NO > 3U
             {
                 PLL_PHI1_CLK,                    /* name */
-                3U,                              /* value */
+                1U,                              /* value */
                 {
                     0U,
                 }
@@ -429,7 +429,7 @@ const Clock_Ip_ClockConfigType Clock_Ip_aClockConfig[1U] = {
             #if CLOCK_IP_DIVIDERS_NO > 4U
             {
                 CORE_CLK,                    /* name */
-                1U,                              /* value */
+                2U,                              /* value */
                 {
                     0U,
                 }
@@ -439,7 +439,7 @@ const Clock_Ip_ClockConfigType Clock_Ip_aClockConfig[1U] = {
             #if CLOCK_IP_DIVIDERS_NO > 5U
             {
                 AIPS_PLAT_CLK,                    /* name */
-                2U,                              /* value */
+                4U,                              /* value */
                 {
                     0U,
                 }
@@ -449,7 +449,7 @@ const Clock_Ip_ClockConfigType Clock_Ip_aClockConfig[1U] = {
             #if CLOCK_IP_DIVIDERS_NO > 6U
             {
                 AIPS_SLOW_CLK,                    /* name */
-                4U,                              /* value */
+                8U,                              /* value */
                 {
                     0U,
                 }
@@ -459,7 +459,7 @@ const Clock_Ip_ClockConfigType Clock_Ip_aClockConfig[1U] = {
             #if CLOCK_IP_DIVIDERS_NO > 7U
             {
                 HSE_CLK,                    /* name */
-                2U,                              /* value */
+                4U,                              /* value */
                 {
                     0U,
                 }
@@ -469,7 +469,7 @@ const Clock_Ip_ClockConfigType Clock_Ip_aClockConfig[1U] = {
             #if CLOCK_IP_DIVIDERS_NO > 8U
             {
                 DCM_CLK,                    /* name */
-                4U,                              /* value */
+                8U,                              /* value */
                 {
                     0U,
                 }
@@ -479,7 +479,7 @@ const Clock_Ip_ClockConfigType Clock_Ip_aClockConfig[1U] = {
             #if CLOCK_IP_DIVIDERS_NO > 9U
             {
                 LBIST_CLK,                    /* name */
-                4U,                              /* value */
+                8U,                              /* value */
                 {
                     0U,
                 }
@@ -489,7 +489,7 @@ const Clock_Ip_ClockConfigType Clock_Ip_aClockConfig[1U] = {
             #if CLOCK_IP_DIVIDERS_NO > 10U
             {
                 QSPI_MEM_CLK,                    /* name */
-                1U,                              /* value */
+                2U,                              /* value */
                 {
                     0U,
                 }

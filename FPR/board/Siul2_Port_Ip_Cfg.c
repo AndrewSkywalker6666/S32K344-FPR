@@ -7,10 +7,10 @@
 *   Autosar Version      : 4.4.0
 *   Autosar Revision     : ASR_REL_4_4_REV_0000
 *   Autosar Conf.Variant :
-*   SW Version           : 2.0.2
-*   Build Version        : S32K3_RTD_2_0_2_D2211_ASR_REL_4_4_REV_0000_20221129
+*   SW Version           : 2.0.3
+*   Build Version        : S32K3_RTD_2_0_3_D2302_ASR_REL_4_4_REV_0000_20230217
 *
-*   (c) Copyright 2020 - 2022 NXP Semiconductors
+*   (c) Copyright 2020 - 2021 NXP Semiconductors
 *   All Rights Reserved.
 *
 *   NXP Confidential. This software is owned or controlled by NXP and may only be
@@ -51,7 +51,7 @@ extern "C"{
 #define SIUL2_PORT_IP_AR_RELEASE_REVISION_VERSION_CFG_C     0
 #define SIUL2_PORT_IP_SW_MAJOR_VERSION_CFG_C                2
 #define SIUL2_PORT_IP_SW_MINOR_VERSION_CFG_C                0
-#define SIUL2_PORT_IP_SW_PATCH_VERSION_CFG_C                2
+#define SIUL2_PORT_IP_SW_PATCH_VERSION_CFG_C                3
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
@@ -105,12 +105,93 @@ extern "C"{
  * TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 BOARD_InitPins:
 - options: {callFromInitBoot: 'true', coreID: core0}
-- pin_list: []
+- pin_list:
+  - {pin_num: '95', peripheral: LPSPI_0, signal: 'lpspi_pcs, 0', pin_signal: PTB0, direction: OUTPUT}
+  - {pin_num: '98', peripheral: LPSPI_0, signal: 'lpspi_sck, sck', pin_signal: PTC8, direction: OUTPUT}
+  - {pin_num: '97', peripheral: LPSPI_0, signal: lpspi_sin, pin_signal: PTC9, direction: INPUT}
+  - {pin_num: '33', peripheral: LPSPI_0, signal: lpspi_sout, pin_signal: PTA30, direction: OUTPUT}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 /* clang-format on */
 
-/*! @brief No pin was configured for this group or no need any configuration */
+#define PORT_START_SEC_CONFIG_DATA_UNSPECIFIED
+#include "Port_MemMap.h"
+
+/*! @brief Array of pin configuration structures */
+const Siul2_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr0[NUM_OF_CONFIGURED_PINS0] =
+{
+    {
+        .base                        = IP_SIUL2,
+        .pinPortIdx                  = 32u,
+        .mux                         = PORT_MUX_ALT3,
+        .safeMode                    = PORT_SAFE_MODE_DISABLED,
+        .inputFilter                 = PORT_INPUT_FILTER_DISABLED,
+        .driveStrength               = PORT_DRIVE_STRENTGTH_DISABLED,
+        .pullConfig                  = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .pullKeep                    = PORT_PULL_KEEP_DISABLED,
+        .invert                      = PORT_INVERT_DISABLED,
+        .inputBuffer                 = PORT_INPUT_BUFFER_DISABLED,
+        .outputBuffer                = PORT_OUTPUT_BUFFER_ENABLED,
+        .adcInterleaves              = { MUX_MODE_NOT_AVAILABLE, MUX_MODE_NOT_AVAILABLE },
+    },
+    {
+        .base                        = IP_SIUL2,
+        .pinPortIdx                  = 72u,
+        .mux                         = PORT_MUX_ALT6,
+        .safeMode                    = PORT_SAFE_MODE_DISABLED,
+        .inputFilter                 = PORT_INPUT_FILTER_DISABLED,
+        .driveStrength               = PORT_DRIVE_STRENTGTH_DISABLED,
+        .pullConfig                  = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .pullKeep                    = PORT_PULL_KEEP_DISABLED,
+        .invert                      = PORT_INVERT_DISABLED,
+        .inputBuffer                 = PORT_INPUT_BUFFER_DISABLED,
+        .outputBuffer                = PORT_OUTPUT_BUFFER_ENABLED,
+        .adcInterleaves              = { MUX_MODE_NOT_AVAILABLE, MUX_MODE_NOT_AVAILABLE },
+    },
+    {
+        .base                        = IP_SIUL2,
+        .pinPortIdx                  = 73u,
+        .mux                         = PORT_MUX_AS_GPIO,
+        .safeMode                    = PORT_SAFE_MODE_DISABLED,
+        .inputFilter                 = PORT_INPUT_FILTER_DISABLED,
+        .driveStrength               = PORT_DRIVE_STRENTGTH_DISABLED,
+        .pullConfig                  = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .pullKeep                    = PORT_PULL_KEEP_DISABLED,
+        .invert                      = PORT_INVERT_DISABLED,
+        .inputBuffer                 = PORT_INPUT_BUFFER_ENABLED,
+        .outputBuffer                = PORT_OUTPUT_BUFFER_DISABLED,
+        .adcInterleaves              = { MUX_MODE_NOT_AVAILABLE, MUX_MODE_NOT_AVAILABLE },
+        .inputMuxReg                 = {
+                                         230u
+                                       },
+        .inputMux                    = { 
+                                         PORT_INPUT_MUX_ALT2,
+                                         PORT_INPUT_MUX_NO_INIT,
+                                         PORT_INPUT_MUX_NO_INIT,
+                                         PORT_INPUT_MUX_NO_INIT,
+                                         PORT_INPUT_MUX_NO_INIT,
+                                         PORT_INPUT_MUX_NO_INIT,
+                                         PORT_INPUT_MUX_NO_INIT,
+                                         PORT_INPUT_MUX_NO_INIT
+                                       },
+    },
+    {
+        .base                        = IP_SIUL2,
+        .pinPortIdx                  = 30u,
+        .mux                         = PORT_MUX_ALT4,
+        .safeMode                    = PORT_SAFE_MODE_DISABLED,
+        .inputFilter                 = PORT_INPUT_FILTER_DISABLED,
+        .pullConfig                  = PORT_INTERNAL_PULL_NOT_ENABLED,
+        .pullKeep                    = PORT_PULL_KEEP_DISABLED,
+        .invert                      = PORT_INVERT_DISABLED,
+        .inputBuffer                 = PORT_INPUT_BUFFER_DISABLED,
+        .outputBuffer                = PORT_OUTPUT_BUFFER_ENABLED,
+        .adcInterleaves              = { MUX_MODE_NOT_AVAILABLE, MUX_MODE_NOT_AVAILABLE },
+    },
+};
+
+#define PORT_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+#include "Port_MemMap.h"
 
 /*==================================================================================================
                                       LOCAL FUNCTION PROTOTYPES

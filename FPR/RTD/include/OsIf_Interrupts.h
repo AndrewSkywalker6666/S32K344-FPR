@@ -21,12 +21,13 @@
 * bound by the applicable license terms, then you may not retain, install,
 * activate or otherwise use the software.
 ==================================================================================================*/
+#ifndef OSIF_INTERRUPTS_H
+#define OSIF_INTERRUPTS_H
+
 /**
-*   @file       OsIf_Cfg.c
-*   @version 2.0.3
+*   @file
 *
-*
-*   @addtogroup OSIF_DRIVER
+*   @addtogroup osif_drv
 *   @{
 */
 
@@ -35,91 +36,67 @@ extern "C"{
 #endif
 
 /*==================================================================================================
-                                         INCLUDE FILES
- 1) system and project includes
- 2) needed interfaces from external units
- 3) internal and external interfaces from this unit
+*                                          INCLUDE FILES
+* 1) system and project includes
+* 2) needed interfaces from external units
+* 3) internal and external interfaces from this unit
 ==================================================================================================*/
 #include "OsIf_Cfg.h"
-#include "OsIf_Cfg_TypesDef.h"
 
-#if defined(USING_OS_AUTOSAROS)
-#include "Os.h"
-#endif /* defined(USING_OS_AUTOSAROS) */
-
+#if defined(USING_OS_ZEPHYR)
 /*==================================================================================================
-*                              SOURCE FILE VERSION INFORMATION
+*                                 SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define OSIF_CFG_VENDOR_ID_C                    43
-#define OSIF_CFG_AR_RELEASE_MAJOR_VERSION_C     4
-#define OSIF_CFG_AR_RELEASE_MINOR_VERSION_C     4
-#define OSIF_CFG_AR_RELEASE_REVISION_VERSION_C  0
-#define OSIF_CFG_SW_MAJOR_VERSION_C             2
-#define OSIF_CFG_SW_MINOR_VERSION_C             0
-#define OSIF_CFG_SW_PATCH_VERSION_C             3
+#define OSIF_INTERRUPTS_VENDOR_ID                    43
+#define OSIF_INTERRUPTS_AR_RELEASE_MAJOR_VERSION     4
+#define OSIF_INTERRUPTS_AR_RELEASE_MINOR_VERSION     4
+#define OSIF_INTERRUPTS_AR_RELEASE_REVISION_VERSION  0
+#define OSIF_INTERRUPTS_SW_MAJOR_VERSION             2
+#define OSIF_INTERRUPTS_SW_MINOR_VERSION             0
+#define OSIF_INTERRUPTS_SW_PATCH_VERSION             3
 
 /*==================================================================================================
-*                                     FILE VERSION CHECKS
-==================================================================================================*/
-/* Checks against OsIf_Cfg.h */
-#if (OSIF_CFG_VENDOR_ID_C != OSIF_CFG_VENDOR_ID)
-    #error "OsIf_Cfg.c and OsIf_Cfg.h have different vendor ids"
-#endif
-#if ((OSIF_CFG_AR_RELEASE_MAJOR_VERSION_C    != OSIF_CFG_AR_RELEASE_MAJOR_VERSION) || \
-     (OSIF_CFG_AR_RELEASE_MINOR_VERSION_C    != OSIF_CFG_AR_RELEASE_MINOR_VERSION) || \
-     (OSIF_CFG_AR_RELEASE_REVISION_VERSION_C != OSIF_CFG_AR_RELEASE_REVISION_VERSION))
-    #error "AUTOSAR Version Numbers of OsIf_Cfg.c and OsIf_Cfg.h are different"
-#endif
-#if ((OSIF_CFG_SW_MAJOR_VERSION_C != OSIF_CFG_SW_MAJOR_VERSION) || \
-     (OSIF_CFG_SW_MINOR_VERSION_C != OSIF_CFG_SW_MINOR_VERSION) || \
-     (OSIF_CFG_SW_PATCH_VERSION_C != OSIF_CFG_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of OsIf_Cfg.c and OsIf_Cfg.h are different"
-#endif
-
-/* Checks against OsIf_Cfg_TypesDef.h */
-#if (OSIF_CFG_VENDOR_ID_C != OSIF_CFG_TYPESDEF_VENDOR_ID)
-    #error "OsIf_Cfg.c and OsIf_Cfg_TypesDef.h have different vendor ids"
-#endif
-#if ((OSIF_CFG_AR_RELEASE_MAJOR_VERSION_C    != OSIF_CFG_TYPESDEF_AR_RELEASE_MAJOR_VERSION) || \
-     (OSIF_CFG_AR_RELEASE_MINOR_VERSION_C    != OSIF_CFG_TYPESDEF_AR_RELEASE_MINOR_VERSION) || \
-     (OSIF_CFG_AR_RELEASE_REVISION_VERSION_C != OSIF_CFG_TYPESDEF_AR_RELEASE_REVISION_VERSION))
-    #error "AUTOSAR Version Numbers of OsIf_Cfg.c and OsIf_Cfg_TypesDef.h are different"
-#endif
-#if ((OSIF_CFG_SW_MAJOR_VERSION_C != OSIF_CFG_TYPESDEF_SW_MAJOR_VERSION) || \
-     (OSIF_CFG_SW_MINOR_VERSION_C != OSIF_CFG_TYPESDEF_SW_MINOR_VERSION) || \
-     (OSIF_CFG_SW_PATCH_VERSION_C != OSIF_CFG_TYPESDEF_SW_PATCH_VERSION) \
-    )
-    #error "Software Version Numbers of OsIf_Cfg.c and OsIf_Cfg_TypesDef.h are different"
-#endif
-
-/*==================================================================================================
-*                                      DEFINES AND MACROS
+*                                       FILE VERSION CHECKS
 ==================================================================================================*/
 
 /*==================================================================================================
-*                                      LOCAL VARIABLES
+*                                            CONSTANTS
 ==================================================================================================*/
 
 /*==================================================================================================
-*                                STRUCTURES AND OTHER TYPEDEFS
+*                                       DEFINES AND MACROS
 ==================================================================================================*/
 
 /*==================================================================================================
-*                                      GLOBAL VARIABLES
+*                                              ENUMS
 ==================================================================================================*/
 
 /*==================================================================================================
-*                                      GLOBAL CONSTANTS
+*                                  STRUCTURES AND OTHER TYPEDEFS
 ==================================================================================================*/
 
 /*==================================================================================================
-*                                    FUNCTION PROTOTYPES
+*                                  GLOBAL VARIABLE DECLARATIONS
 ==================================================================================================*/
 
+/*==================================================================================================
+*                                       FUNCTION PROTOTYPES
+==================================================================================================*/
+#define BASE_START_SEC_CODE
+#include "Base_MemMap.h"
+
+void OsIf_Interrupts_ResumeAllInterrupts(void);
+void OsIf_Interrupts_SuspendAllInterrupts(void);
+
+#define BASE_STOP_SEC_CODE
+#include "Base_MemMap.h"
+
+#endif /* defined(USING_OS_ZEPHYR) */
 
 #ifdef __cplusplus
 }
-#endif /* __cplusplus */
+#endif
+
 /** @} */
 
+#endif /* OSIF_INTERRUPTS_H */

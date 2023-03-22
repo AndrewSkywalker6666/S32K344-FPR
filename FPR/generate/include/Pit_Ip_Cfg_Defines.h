@@ -1,7 +1,7 @@
 /*==================================================================================================
 * Project : RTD AUTOSAR 4.4
 * Platform : CORTEXM
-* Peripheral : S32K3XX
+* Peripheral : Stm_Pit_Rtc_Emios
 * Dependencies : none
 *
 * Autosar Version : 4.4.0
@@ -21,108 +21,92 @@
 * bound by the applicable license terms, then you may not retain, install,
 * activate or otherwise use the software.
 ==================================================================================================*/
+
+
+#ifndef PIT_IP_CFG_DEFINES_H
+#define PIT_IP_CFG_DEFINES_H
+
 /**
-*   @file       OsIf_Cfg.h
-*   @version 2.0.3
+*   @file           Pit_Ip_Cfg_Defines.h
 *
+*   @addtogroup     pit_ip Pit IPL
 *
-*   @addtogroup OSIF_DRIVER
 *   @{
 */
-
-#ifndef OSIF_CFG_H
-#define OSIF_CFG_H
-
 #ifdef __cplusplus
 extern "C"{
 #endif
 
 /*==================================================================================================
-                                         INCLUDE FILES
- 1) system and project includes
- 2) needed interfaces from external units
- 3) internal and external interfaces from this unit
+*                                        INCLUDE FILES
+* 1) system and project includes
+* 2) needed interfaces from external units
+* 3) internal and external interfaces from this unit
 ==================================================================================================*/
-#include "OsIf_ArchCfg.h"
 #include "StandardTypes.h"
-
-#include "S32K344_SYSTICK.h"
+#include "S32K344_PIT.h"
 /*==================================================================================================
 *                              SOURCE FILE VERSION INFORMATION
 ==================================================================================================*/
-#define OSIF_CFG_VENDOR_ID                    43
-#define OSIF_CFG_AR_RELEASE_MAJOR_VERSION     4
-#define OSIF_CFG_AR_RELEASE_MINOR_VERSION     4
-#define OSIF_CFG_AR_RELEASE_REVISION_VERSION  0
-#define OSIF_CFG_SW_MAJOR_VERSION             2
-#define OSIF_CFG_SW_MINOR_VERSION             0
-#define OSIF_CFG_SW_PATCH_VERSION             3
+#define PIT_IP_DEFINES_VENDOR_ID_CFG                    43
+#define PIT_IP_DEFINES_AR_RELEASE_MAJOR_VERSION_CFG     4
+#define PIT_IP_DEFINES_AR_RELEASE_MINOR_VERSION_CFG     4
+#define PIT_IP_DEFINES_AR_RELEASE_REVISION_VERSION_CFG  0
+#define PIT_IP_DEFINES_SW_MAJOR_VERSION_CFG             2
+#define PIT_IP_DEFINES_SW_MINOR_VERSION_CFG             0
+#define PIT_IP_DEFINES_SW_PATCH_VERSION_CFG             3
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
 ==================================================================================================*/
-/* Checks against OsIf_ArchCfg.h */
-#if (OSIF_CFG_VENDOR_ID != OSIF_ARCHCFG_VENDOR_ID)
-    #error "OsIf_Cfg.h and OsIf_ArchCfg.h have different vendor ids"
-#endif
-#if ((OSIF_CFG_AR_RELEASE_MAJOR_VERSION    != OSIF_ARCHCFG_AR_RELEASE_MAJOR_VERSION) || \
-     (OSIF_CFG_AR_RELEASE_MINOR_VERSION    != OSIF_ARCHCFG_AR_RELEASE_MINOR_VERSION) || \
-     (OSIF_CFG_AR_RELEASE_REVISION_VERSION != OSIF_ARCHCFG_AR_RELEASE_REVISION_VERSION))
-     #error "AUTOSAR Version Numbers of OsIf_Cfg.h and OsIf_ArchCfg.h are different"
-#endif
-#if ((OSIF_CFG_SW_MAJOR_VERSION != OSIF_ARCHCFG_SW_MAJOR_VERSION) || \
-     (OSIF_CFG_SW_MINOR_VERSION != OSIF_ARCHCFG_SW_MINOR_VERSION) || \
-     (OSIF_CFG_SW_PATCH_VERSION != OSIF_ARCHCFG_SW_PATCH_VERSION))
-    #error "Software Version Numbers of OsIf_Cfg.h and OsIf_ArchCfg.h are different"
-#endif
-
-/* Checks against StandardTypes.h */
+/* Check if header file and StandardTypes.h file are of the same Autosar version */
 #ifndef DISABLE_MCAL_INTERMODULE_ASR_CHECK
-    #if ((OSIF_CFG_AR_RELEASE_MAJOR_VERSION != STD_AR_RELEASE_MAJOR_VERSION) || \
-         (OSIF_CFG_AR_RELEASE_MINOR_VERSION != STD_AR_RELEASE_MINOR_VERSION))
-        #error "AutoSar Version Numbers of OsIf_Cfg.h and StandardTypes.h are different"
+    #if ((PIT_IP_DEFINES_AR_RELEASE_MAJOR_VERSION_CFG != STD_AR_RELEASE_MAJOR_VERSION) || \
+         (PIT_IP_DEFINES_AR_RELEASE_MINOR_VERSION_CFG != STD_AR_RELEASE_MINOR_VERSION))
+    #error "AutoSar Version Numbers of Pit_Ip_Cfg_Defines.h and StandardTypes.h are different"
     #endif
 #endif
 /*==================================================================================================
-*                                            CONSTANTS
+*                                          CONSTANTS
 ==================================================================================================*/
 
 /*==================================================================================================
 *                                      DEFINES AND MACROS
 ==================================================================================================*/
-/* General OSIF configuration */
-#define OSIF_MODULE_ID                   (255U)
+/**
+* @brief These defines indicate that at least one channel from each module is used in all configurations.
+*/
+#define PIT_IP_USED   (STD_ON) 
+#define PIT_IP_RTI_USED   (STD_OFF) 
+#define PIT_IP_RTI_CHANNEL_EXISTS
+/**
+* @brief This define is used to select between interrupt on each channel and source interrupt
+*        on entire module sources hardware implementations.
+*
+*/
+#define PIT_IP_MODULE_SINGLE_INTERRUPT (STD_ON) 
+/**
+*
+* @brief IRQ Defines for each channel used
+*/
+#define PIT_0_ISR_USED 
 
-#define OSIF_DRIVER_INSTANCE             (255U)
+/**
+*
+* @brief Module Disable for PIT bit exists on current platform
+*/
+#define PIT_IP_MDIS_BIT_EXISTS    (STD_ON)
+/**
+*
+* @brief PIT_IP_PECULIAR exists on current platform
+*/
+#define PIT_IP_PECULIAR_INSTANCES (STD_OFF)
 
-#define OSIF_ENABLE_USER_MODE_SUPPORT     (STD_OFF)
-
-#ifndef MCAL_ENABLE_USER_MODE_SUPPORT
-    #if (STD_ON == OSIF_ENABLE_USER_MODE_SUPPORT)
-        #error MCAL_ENABLE_USER_MODE_SUPPORT is not enabled. For running OsIf in user mode, MCAL_ENABLE_USER_MODE_SUPPORT needs to be defined.
-    #endif /* (STD_ON == OSIF_ENABLE_USER_MODE_SUPPORT */
-#endif /* ifndef MCAL_ENABLE_USER_MODE_SUPPORT */
-
-#define OSIF_ENABLE_MULTICORE_SUPPORT    (STD_OFF)
-
-#define OSIF_MAX_COREIDX_SUPPORTED       (1U)
-
-#define OSIF_DEV_ERROR_DETECT            (STD_ON)
-
-#define USING_OS_BAREMETAL
-
-#define OSIF_USE_SYSTEM_TIMER            (STD_OFF)
-
-#define OSIF_USE_CUSTOM_TIMER            (STD_OFF)
-
-/* Autosar OS Specific */
-
-/* Baremetal Specific */
-#if (MCAL_PLATFORM_ARM == MCAL_ARM_MARCH)
-    #define OSIF_USE_SYSTICK                 (STD_ON)
-#else
-    #define OSIF_USE_GENERICTIMER            (STD_ON)
-#endif
+/**
+*
+* @brief PIT_IP_INSTANCE_GAP_EXISTS
+*/
+#define PIT_IP_INSTANCE_GAP_EXISTS (STD_OFF)
 
 /*==================================================================================================
 *                                             ENUMS
@@ -137,17 +121,13 @@ extern "C"{
 ==================================================================================================*/
 
 /*==================================================================================================
-                                       GLOBAL CONSTANTS
-==================================================================================================*/
-
-/*==================================================================================================
 *                                    FUNCTION PROTOTYPES
 ==================================================================================================*/
 
-
 #ifdef __cplusplus
 }
-#endif /* __cplusplus */
-#endif /* OSIF_CFG_H */
+#endif
+
 /** @} */
+#endif  /* PIT_IP_CFG_DEFINES_H */
 

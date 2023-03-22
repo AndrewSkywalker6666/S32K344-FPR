@@ -7,10 +7,10 @@
 *   Autosar Version      : 4.4.0
 *   Autosar Revision     : ASR_REL_4_4_REV_0000
 *   Autosar Conf.Variant :
-*   SW Version           : 2.0.2
-*   Build Version        : S32K3_RTD_2_0_2_D2211_ASR_REL_4_4_REV_0000_20221129
+*   SW Version           : 2.0.3
+*   Build Version        : S32K3_RTD_2_0_3_D2302_ASR_REL_4_4_REV_0000_20230217
 *
-*   (c) Copyright 2020 - 2022 NXP Semiconductors
+*   (c) Copyright 2020 - 2021 NXP Semiconductors
 *   All Rights Reserved.
 *
 *   NXP Confidential. This software is owned or controlled by NXP and may only be
@@ -55,7 +55,7 @@ extern "C"{
 #define SIUL2_PORT_IP_AR_RELEASE_REVISION_VERSION_CFG_H     0
 #define SIUL2_PORT_IP_SW_MAJOR_VERSION_CFG_H                2
 #define SIUL2_PORT_IP_SW_MINOR_VERSION_CFG_H                0
-#define SIUL2_PORT_IP_SW_PATCH_VERSION_CFG_H                2
+#define SIUL2_PORT_IP_SW_PATCH_VERSION_CFG_H                3
 
 /*==================================================================================================
 *                                     FILE VERSION CHECKS
@@ -98,7 +98,17 @@ extern "C"{
 
 /*! @brief Definitions for BOARD_InitPins Functional Group */
 
-/*! @brief No pin was configured for this group or no need any configuration */
+/*! @brief User number of configured pins */
+#define NUM_OF_CONFIGURED_PINS0 4
+
+#define PORT_START_SEC_CONFIG_DATA_UNSPECIFIED
+#include "Port_MemMap.h"
+
+/*! @brief User configuration structure */
+extern const Siul2_Port_Ip_PinSettingsConfig g_pin_mux_InitConfigArr0[NUM_OF_CONFIGURED_PINS0];
+
+#define PORT_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+#include "Port_MemMap.h"
 
 /*==================================================================================================
                                            ENUMS

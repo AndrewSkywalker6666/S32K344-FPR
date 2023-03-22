@@ -55,4 +55,9 @@ int main(void)
     return exit_code;
 }
 
+void CALL_BACK_PIT(uint8_t channel)
+{
+
+}
+
 /** @} */
