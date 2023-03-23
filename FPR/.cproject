@@ -753,7 +753,7 @@
 	<storageModule moduleId="com.nxp.s32ds.cle.uct.core">
 		<COND_TOOLCHAIN_ADD_REMOVE_COMPONENTS_OPTION>true</COND_TOOLCHAIN_ADD_REMOVE_COMPONENTS_OPTION>
 		<COND_TOOLCHAIN_COPY_SOURCES>true</COND_TOOLCHAIN_COPY_SOURCES>
-		<sdkComponents>platform.driver.rte_spi;platform.driver.rte_gpt;platform.driver.IntCtrl_Ip;platform.driver.lpspi;platform.driver.pit;platform.driver.clock;platform.driver.rte_mcu;platform.driver.det;platform.driver.osif;platform.driver.siul2_port;platform.driver.rte_port</sdkComponents>
+		<sdkComponents>platform.driver.rte_spi;platform.driver.rte_gpt;platform.driver.IntCtrl_Ip;platform.driver.lpspi;platform.driver.pit;platform.driver.clock;platform.driver.rte_mcu;platform.driver.det;platform.driver.osif;platform.driver.siul2_port;platform.driver.rte_port;platform.driver.rte_mcl;platform.driver.dma;platform.driver.rte_dio;platform.driver.siul2_dio</sdkComponents>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 	<storageModule moduleId="com.nxp.s32ds.cle.uct.internal.core.toolchainSettings">
@@ -764,6 +764,7 @@
 		<COND_TOOLCHAIN_CUSTOM_OPTION/>
 	</storageModule>
 	<storageModule moduleId="com.nxp.s32ds.cle.uct.internal.core.toolchainScriptProfile">
-		<COND_TOOLCHAIN_COMPONENTS_OPTION>COPY=platform.driver.pit;platform.driver.clock;platform.driver.osif;platform.driver.IntCtrl_Ip;platform.driver.siul2_port;platform.driver.lpspi</COND_TOOLCHAIN_COMPONENTS_OPTION>
+		<COND_TOOLCHAIN_COMPONENTS_OPTION>COPY=platform.driver.siul2_dio;platform.driver.pit;platform.driver.clock;platform.driver.osif;platform.driver.IntCtrl_Ip;platform.driver.siul2_port;platform.driver.lpspi;platform.driver.dma</COND_TOOLCHAIN_COMPONENTS_OPTION>
 	</storageModule>
+	<storageModule moduleId="refreshScope"/>
 </cproject>

@@ -106,10 +106,11 @@ extern "C"{
 BOARD_InitPins:
 - options: {callFromInitBoot: 'true', coreID: core0}
 - pin_list:
-  - {pin_num: '95', peripheral: LPSPI_0, signal: 'lpspi_pcs, 0', pin_signal: PTB0, direction: OUTPUT}
-  - {pin_num: '98', peripheral: LPSPI_0, signal: 'lpspi_sck, sck', pin_signal: PTC8, direction: OUTPUT}
-  - {pin_num: '97', peripheral: LPSPI_0, signal: lpspi_sin, pin_signal: PTC9, direction: INPUT}
-  - {pin_num: '33', peripheral: LPSPI_0, signal: lpspi_sout, pin_signal: PTA30, direction: OUTPUT}
+  - {pin_num: '153', peripheral: LPSPI_4, signal: lpspi_sin, pin_signal: PTE21, direction: INPUT}
+  - {pin_num: '154', peripheral: LPSPI_4, signal: 'lpspi_sck, sck', pin_signal: PTE22, direction: OUTPUT}
+  - {pin_num: '156', peripheral: LPSPI_4, signal: 'lpspi_pcs, 0', pin_signal: PTE23, direction: OUTPUT}
+  - {pin_num: '158', peripheral: LPSPI_4, signal: lpspi_sout, pin_signal: PTE25, direction: OUTPUT}
+  - {pin_num: '89', peripheral: SIUL2, signal: 'gpio, 89', pin_signal: PTC25, direction: OUTPUT}
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
  */
 /* clang-format on */
