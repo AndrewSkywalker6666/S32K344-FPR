@@ -47,6 +47,26 @@
 /* PIT time-out period - equivalent to 100ms */
 #define PIT_PERIOD 400000
 
+#define TIMEOUT             ((uint32)1000000UL)
+#define NUMBER_OF_BYTES     (10)
+
+#define SLAVE_EXTERNAL_DEVICE          	 (Lpspi_Ip_DeviceAttributes_SpiExternalDevice_0_Instance_0_BOARD_InitPeripherals)
+//#define MASTER_EXTERNAL_DEVICE           (Flexio_Spi_Ip_DeviceAttributes_SpiExternalDevice_Master_Instance_0_BOARD_InitPeripherals)
+
+#define SPI_START_SEC_VAR_INIT_8_NO_CACHEABLE
+#include "Spi_MemMap.h"
+uint8 TxSlaveBuffer[NUMBER_OF_BYTES] = {0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19};
+uint8 RxSlaveBuffer[NUMBER_OF_BYTES];
+#define SPI_STOP_SEC_VAR_INIT_8_NO_CACHEABLE
+#include "Spi_MemMap.h"
+
+#define SPI_START_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#include "Spi_MemMap.h"
+uint8 TxMasterBuffer[NUMBER_OF_BYTES] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09};
+
+#define SPI_STOP_SEC_VAR_CLEARED_8_NO_CACHEABLE
+#include "Spi_MemMap.h"
+
 volatile int exit_code = 0;
 /* User includes */
 
@@ -58,6 +78,9 @@ volatile int exit_code = 0;
 */
 
 uint8_t read_flag = 0;
+uint8_t image[100][100];
+uint8_t* my_buffer = image;//自定义图像指针
+uint8* RxMasterBuffer = image;
 
 int main(void)
 {
@@ -75,13 +98,18 @@ int main(void)
 	Pit_Ip_InitChannel(PIT_INST_0, PIT_0_CH_0);
 	Pit_Ip_EnableChannelInterrupt(PIT_INST_0, CH_0);
 	Pit_Ip_StartChannel(PIT_INST_0, CH_0, PIT_PERIOD);
-
+	Lpspi_Ip_Init(&Lpspi_Ip_PhyUnitConfig_SpiPhyUnit_0_Instance_0_BOARD_InitPeripherals);
+	Lpspi_Ip_UpdateFrameSize(&SLAVE_EXTERNAL_DEVICE, 8U);
+	Lpspi_Ip_UpdateLsb(&SLAVE_EXTERNAL_DEVICE, FALSE);
+	Lpspi_Ip_UpdateTransferMode(SLAVE_EXTERNAL_DEVICE.Instance, LPSPI_IP_INTERRUPT);
 
     for(;;)
     {
     	if(read_flag > 100)
     	{
     		Siul2_Dio_Ip_TogglePins(PTC_H_HALF, (1<<9U));
+    		//开始传输
+    		Lpspi_Ip_SyncTransmit(&SLAVE_EXTERNAL_DEVICE, TxSlaveBuffer, RxSlaveBuffer, NUMBER_OF_BYTES, NULL_PTR);
     		read_flag = 0;//读取结束
     	}
 
